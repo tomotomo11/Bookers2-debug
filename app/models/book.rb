@@ -9,14 +9,14 @@ class Book < ApplicationRecord
     if method == 'perfect'
       Book.where(title: content)
     elsif method == 'forward'
-      Book.where('name LIKE ?', content + '%')
+      Book.where('title LIKE ?', content + '%')
     elsif method == 'backward'
-      Book.where('name LIKE ?', '%' + content)
+      Book.where('title LIKE ?', '%' + content)
     else
-      Book.where('name LIKE ?', '%' + content + '%')
+      Book.where('title LIKE ?', '%' + content + '%')
     end
   end
-  
+
   def favorited_by?(user)
     favorites.exists?(user_id: user.id)
   end

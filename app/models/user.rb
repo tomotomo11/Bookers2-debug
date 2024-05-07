@@ -47,7 +47,7 @@ class User < ApplicationRecord
     elsif method == 'backward'
       User.where('name LIKE ?', '%' + content)
     else
-      User.where('name LINE ?', '%' + content + '%')
+      User.where('name LIKE ?', '%' + content + '%')
     end
   end
 
