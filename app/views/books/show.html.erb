@@ -23,7 +23,7 @@
           </td>
 
           <td>
-            <p>コメント数：<%= @book.book_comments.count %></p>
+            <p>コメント数：<span id="comment_count"><%= @book.book_comments.count %></span></p>
           </td>
           <% if @book.user == current_user %>
             <td><%= link_to 'Edit', edit_book_path(@book), class: "btn btn-sm btn-success" %></td>
@@ -31,15 +31,16 @@
           <% end %>
         </tr>
       </table>
-
-      <table class="book_comments">
+      <div id="book_comments">
+      <table>
         <%= render "book_comments/index", book: @book %>
       </table>
+      </div>
 
-      <%= form_with model: [@book, @book_comment] do |f| %>
-        <%= f.text_area :comment, rows: '5', style: "width: 100%" %>
-        <%= f.submit "送信" %>
-      <% end %>
+      <div id="comment-form">
+        <%= render "book_comments/form", book: @book, book_comment:@book_comment %>
+      </div>
+
     </div>
   </div>
 </div>
