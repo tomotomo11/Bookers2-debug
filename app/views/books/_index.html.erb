@@ -27,6 +27,9 @@
         <td>
           閲覧数: <%= book.view_counts.count %>
         </td>
+        <td>
+          <%= render "static_rate", book: book %>
+        </td>
       </tr>
     <% end %>
   </tbody>
